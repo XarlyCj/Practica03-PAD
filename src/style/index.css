@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
+html, body {
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	background: white;
+	font-family: 'Helvetica Neue', arial, sans-serif;
+	font-weight: 400;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#app {
+	height: 100%;
+}
+
+/*HEADER*/
+.header {
+	display: flex;
+	align-items:center;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 72px;
+	padding: 0;
+	background: #142850;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+	z-index: 50;
+}
+
+.header h1 {
+	float: left;
+	margin: 0;
+	padding: 0 15px;
+	font-size: 24px;
+	line-height: 56px;
+	font-weight: 400;
+	color: #FFF;
+	font-family: 'Anton', sans-serif;
+}
+
+.header nav {
+	float: right;
+	font-size: 100%;
+}
+
+.header nav a {
+	display: inline-block;
+	height: 72px;
+	line-height: 56px;
+	padding: 0 15px;
+	min-width: 50px;
+	text-align: center;
+	background: rgba(255,255,255,0);
+	text-decoration: none;
+	color: #FFF;
+	will-change: background-color;
+}
+
+.header nav a:hover,
+.header nav a:active {
+	background: rgba(0,0,0,0.2);
+}
+
+.header nav a.active {
+	background: rgba(0,0,0,0.4);
+}
+
+/*LO DEMÁ*/
+.home {
+	padding: 60px;
+	min-height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 30px auto;
+	font-size: 18px;
+}
+
+.home h1 {
+	max-width: 700px;
+	font-size: 60px;
+	text-align: left;
+	margin-left: 0;
+	text-align: center;
+	margin-bottom: 24px;
+}
+
+h2 {
+	max-width: 700px;
+	font-weight: normal;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.home h1 span{
+	font-family: 'Anton', sans-serif;
+}
+
+
+.button {
+	color: white;
+	background-color: #142850;
+	padding: 8px 62px;
+	font-size: 16px;
+	margin: 18px;
+	font-weight: 500;
+	height: 56px;
+	appearance: none;
+	border: none;
+	border-radius: 4px;
+	max-width: 250px;
+}
+
+.button-containe{
+	display: flex;
+}
+
+.input {
+	width: 100%;
+	margin-top: 20px;
+	height: 56px;
+	padding: 10px;
+	font-size: 18px;
+}
+
+h3 {
+	font-size: 30px;
+	margin-top: 60px;
+	margin-left: 20px;;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 450px;
+}
+
+.form .button  {
+	margin: 20px auto;
+	width: calc(50% - 10px);
+}
+
+.form .button:first-of-type {
+	margin-right: 20px;;
+}
+
+.task {
+	padding: 50px 50px 0 50px;
+	width: 600px;
+	background-color:#DAE1E7;
+	color: #142850;
+	border-radius: 4px;
+}
+.task .form {
+	max-width: unset;
+	margin: 0;
+}
+
+.task:last-of-type {
+	padding-bottom: 50px;
+}
+
+.task .button {
+	max-width: unset;
+	width:100%;
+	margin: 0;
+	height: auto;
+	font-size: 18px;
+	text-align: left;
+	padding: 30px;
+}
+
+.task .button-container {
+	width: 100%;
+	display: flex;
+}
+
+.task .button-container  .button{
+	width: 33%;
+	height: 56px;
+	margin:20px 20px 20px 0;
+	text-align: center;
+	padding: 16px 20px;
+
+}
+
+.task .button-container  .button:last-of-type {
+	margin-right: 0;
+}
