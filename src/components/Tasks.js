@@ -14,7 +14,6 @@ const Task = ({value = '', parentState, setParentState}) =>{
 
 	function submitTask(e){
 		e.preventDefault();
-		console.log("submitting")
 		if(stateValue != ""){
 			let tasks = {};
 			let md5Text = "";
@@ -42,17 +41,18 @@ const Task = ({value = '', parentState, setParentState}) =>{
 	}
 	function deleteTask(e){
 		e.preventDefault();
-		console.log("deleting")
-		let tasks = {};
-		let md5OldText = "";
-		tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
-		md5OldText = md5(value);
-		if(Object.prototype.hasOwnProperty.call(tasks, md5OldText)){
-			delete tasks[md5OldText];
+		if(confirm("¿Seguro que quieres eliminar la tarea?")){
+			let tasks = {};
+			let md5OldText = "";
+			tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
+			md5OldText = md5(value);
+			if(Object.prototype.hasOwnProperty.call(tasks, md5OldText)){
+				delete tasks[md5OldText];
+			}
+			localStorage.tasks = JSON.stringify(tasks);
+			setModifyTask(false)
+			setParentState(!parentState)
 		}
-		localStorage.tasks = JSON.stringify(tasks);
-		setModifyTask(false)
-		setParentState(!parentState)
 	}
 	return(
 		<div class="task">

@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
+import HttpsRedirect from 'react-https-redirect';
 
 import Header from './header/Header';
 
@@ -19,10 +20,12 @@ export default class App extends Component {
 	render() {
 		return (
 			<div id="app">
-				<Header />
-				<Router onChange={this.handleRoute}>
-					<Home path="/" />
-				</Router>
+				<HttpsRedirect>
+					<Header />
+					<Router onChange={this.handleRoute}>
+						<Home path="/" />
+					</Router>
+				</HttpsRedirect>
 			</div>
 		);
 	}

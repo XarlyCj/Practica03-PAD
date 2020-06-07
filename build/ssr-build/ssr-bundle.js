@@ -66,6 +66,31 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "5D9O":
+/***/ (function(module, exports, __webpack_require__) {
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+if (false) {
+  var ReactIs = require('react-is');
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = require('./factoryWithTypeCheckers')(ReactIs.isElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__("wVGV")();
+}
+
+/***/ }),
+
 /***/ "6KOv":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -862,6 +887,25 @@ module.exports =
 
 /***/ }),
 
+/***/ "Asjh":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+module.exports = ReactPropTypesSecret;
+
+/***/ }),
+
 /***/ "JkW7":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1376,6 +1420,10 @@ preact_router_es_Router.exec = exec;
 
 /* harmony default export */ var preact_router_es = (preact_router_es_Router);
 //# sourceMappingURL=preact-router.es.js.map
+// EXTERNAL MODULE: ../node_modules/react-https-redirect/lib/index.js
+var lib = __webpack_require__("sL3J");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
 // CONCATENATED MODULE: ./components/header/Header.js
 
 
@@ -1562,7 +1610,6 @@ var Tasks_Task = function Task(_ref) {
 
 	function submitTask(e) {
 		e.preventDefault();
-		console.log("submitting");
 		if (stateValue != "") {
 			var tasks = {};
 			var md5Text = "";
@@ -1588,17 +1635,18 @@ var Tasks_Task = function Task(_ref) {
 	}
 	function deleteTask(e) {
 		e.preventDefault();
-		console.log("deleting");
-		var tasks = {};
-		var md5OldText = "";
-		tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
-		md5OldText = md5_default()(value);
-		if (Object.prototype.hasOwnProperty.call(tasks, md5OldText)) {
-			delete tasks[md5OldText];
+		if (confirm("¿Seguro que quieres eliminar la tarea?")) {
+			var tasks = {};
+			var md5OldText = "";
+			tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
+			md5OldText = md5_default()(value);
+			if (Object.prototype.hasOwnProperty.call(tasks, md5OldText)) {
+				delete tasks[md5OldText];
+			}
+			localStorage.tasks = JSON.stringify(tasks);
+			setModifyTask(false);
+			setParentState(!parentState);
 		}
-		localStorage.tasks = JSON.stringify(tasks);
-		setModifyTask(false);
-		setParentState(!parentState);
 	}
 	return Object(preact_min["h"])(
 		'div',
@@ -1673,9 +1721,18 @@ var _ref3 = Object(preact_min["h"])(
 );
 
 var _ref4 = Object(preact_min["h"])(
-	'h3',
+	'div',
 	null,
-	'Tareas pendientes'
+	Object(preact_min["h"])(
+		'h3',
+		null,
+		'Tareas pendientes'
+	),
+	Object(preact_min["h"])(
+		'h2',
+		null,
+		'Pincha encima de alguna de las tareas para modificarla o eliminarla'
+	)
 );
 
 var Home_Home = function Home() {
@@ -1700,7 +1757,6 @@ var Home_Home = function Home() {
 	function submitTask(e) {
 		e.preventDefault();
 		if (stateValue != "") {
-			console.log(stateValue);
 			var tasks = {};
 			var md5Text = "";
 			var md5OldText = "";
@@ -1736,14 +1792,12 @@ var Home_Home = function Home() {
 			setRenderState(!renderState);
 			return [];
 		}
-		console.log("listing");
 		var tasks = {};
 		var taskComponents = [];
 		tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
 		for (var prop in tasks) {
 			taskComponents.push(Object(preact_min["h"])(Tasks, { value: tasks[prop], parentState: renderState, setParentState: setRenderState }));
 		}
-		console.log(taskComponents);
 		return taskComponents;
 	};
 
@@ -1798,6 +1852,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
+
 // Code-splitting is automated for routes
 
 
@@ -1832,11 +1887,15 @@ var app_App = function (_Component) {
 		return Object(preact_min["h"])(
 			'div',
 			{ id: 'app' },
-			app__ref,
 			Object(preact_min["h"])(
-				preact_router_es_Router,
-				{ onChange: this.handleRoute },
-				app__ref2
+				lib_default.a,
+				null,
+				app__ref,
+				Object(preact_min["h"])(
+					preact_router_es_Router,
+					{ onChange: this.handleRoute },
+					app__ref2
+				)
 			)
 		);
 	};
@@ -2359,6 +2418,116 @@ module.exports = require("crypto");
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "sL3J":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _propTypes = __webpack_require__("5D9O");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+var isLocalHost = function isLocalHost(hostname) {
+  return !!(hostname === 'localhost' || hostname === '[::1]' || hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
+};
+
+var HttpsRedirect = function HttpsRedirect(_ref) {
+  var disabled = _ref.disabled,
+      children = _ref.children;
+
+  if (!disabled && typeof window !== 'undefined' && window.location && window.location.protocol === 'http:' && !isLocalHost(window.location.hostname)) {
+    window.location.href = window.location.href.replace(/^http(?!s)/, 'https');
+    return null;
+  }
+
+  return children;
+};
+
+HttpsRedirect.propTypes = {
+  children: _propTypes2.default.node,
+  disabled: _propTypes2.default.bool
+};
+
+exports.default = HttpsRedirect;
+
+/***/ }),
+
+/***/ "wVGV":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+
+
+var ReactPropTypesSecret = __webpack_require__("Asjh");
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+module.exports = function () {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+    err.name = 'Invariant Violation';
+    throw err;
+  };
+  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  };
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
 
 /***/ })
 

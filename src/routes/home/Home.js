@@ -19,7 +19,6 @@ const Home = () =>{
 	function submitTask(e){
 		e.preventDefault();
 		if(stateValue != ""){
-			console.log(stateValue);
 			let tasks = {};
 			let md5Text = "";
 			let md5OldText = "";
@@ -57,7 +56,6 @@ const Home = () =>{
 			setRenderState(!renderState)
 			return [];
 		}
-		console.log("listing")
 		let tasks = {};
 		let taskComponents = [];
 		tasks = localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {};
@@ -66,7 +64,6 @@ const Home = () =>{
 				<Task value={tasks[prop]} parentState={renderState} setParentState={setRenderState} />
 			);
 		}
-		console.log(taskComponents)
 		return taskComponents;
 	}
 
@@ -88,7 +85,11 @@ const Home = () =>{
 				</form>
 			)}
 
-			{objectSize(localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {}) > 0 && <h3>Tareas pendientes</h3>}
+			{objectSize(localStorage.tasks != undefined ? JSON.parse(localStorage.tasks) : {}) > 0 &&
+				<div>
+					<h3>Tareas pendientes</h3>
+					<h2>Pincha encima de alguna de las tareas para modificarla o eliminarla</h2>
+				</div>}
 			
 			{tasksList()}
 			
